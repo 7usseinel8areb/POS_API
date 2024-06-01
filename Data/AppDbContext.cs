@@ -1,6 +1,7 @@
-﻿namespace PointofSalesApi.Data
+﻿
+namespace PointofSalesApi.Data
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext:IdentityDbContext<AppUser>
     {
         public AppDbContext()
         {
@@ -8,5 +9,7 @@
         public AppDbContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<Employee> Employees { get; set; }
     }
 }

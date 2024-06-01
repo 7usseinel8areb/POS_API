@@ -16,8 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(ConnectionString);
 });
 
-/*builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<AppDbContext>();*/
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>();
 #endregion
 
 var app = builder.Build();
