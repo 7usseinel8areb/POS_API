@@ -1,3 +1,5 @@
+using PointofSalesApi.Services.ModelsServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,6 +21,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>();
 #endregion
+
+builder.Services.AddScoped<ISupplierService, SupplierService>();
 
 var app = builder.Build();
 

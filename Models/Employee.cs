@@ -1,25 +1,7 @@
 ﻿namespace PointofSalesApi.Models
 {
-    public class Employee 
+    public class Employee :Person
     {
-        public int Id { get; set; }
-
-        [Required(ErrorMessage = "Name is required")]
-        [StringLength(100, ErrorMessage = "Name length can't be more than 100.")]
-        public string Name { get; set; }
-
-        [Required(ErrorMessage = "Password is required")]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        [Required(ErrorMessage = "Email is required")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
-        public string Email { get; set; }
-
-        [Required(ErrorMessage = "Phone number is required")]
-        [Phone(ErrorMessage = "Invalid Phone Number")]
-        public string PhoneNumber { get; set; }
-
         [Required(ErrorMessage = "Gender is required")]
         [RegularExpression("^[MF]$", ErrorMessage = "Gender must be 'M' or 'F'")]
         public char Gender { get; set; }
@@ -36,8 +18,8 @@
 
         public bool IsActive { get; set; }
 
-        [ForeignKey("User")]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
         public virtual AppUser User { get; set; }
 
         public Employee()

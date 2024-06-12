@@ -1,7 +1,11 @@
 ﻿global using Microsoft.AspNetCore.Identity;
-global using Microsoft.EntityFrameworkCore;
-global using PointofSalesApi.Data;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-global using System.ComponentModel.DataAnnotations;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.IdentityModel.Tokens;
+global using PointofSalesApi.Data;
+global using PointofSalesApi.DTO;
 global using PointofSalesApi.Models;
+global using PointofSalesApi.Services.Interfaces;
+global using System.ComponentModel.DataAnnotations;
 global using System.ComponentModel.DataAnnotations.Schema;
