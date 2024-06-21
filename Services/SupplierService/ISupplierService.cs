@@ -1,5 +1,6 @@
-﻿
-namespace PointofSalesApi.Services.Interfaces
+﻿using PointofSalesApi.DTO.SuppliersDTO;
+
+namespace PointofSalesApi.Services.SupplierService
 {
     public interface ISupplierService
     {
@@ -8,7 +9,7 @@ namespace PointofSalesApi.Services.Interfaces
         SupplierWithProductsAndPurchaseInvoiceDTO? GetSupplier(int id);
 
         Task Add(SupplierDTO supplier);
-        Task<bool> Edit(int id,SupplierDTO supplier);
+        Task<bool> Edit(int id, SupplierDTO supplier);
         bool Delete(int id);
     }
 }

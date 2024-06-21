@@ -5,6 +5,6 @@
         [Required]
         public int PurchaseInvoiceId { get; set; }
         [ForeignKey("PurchaseInvoiceId")]
-        public virtual PurchaseInvoice PurchaseInvoice { get; set; }
+        public virtual PurchaseInvoice PurchaseInvoice { get; set; } = new PurchaseInvoice();
     }
 }

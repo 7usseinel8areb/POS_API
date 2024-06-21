@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace PointofSalesApi.Models
+﻿namespace PointofSalesApi.Models
 {
     public class PurchaseInvoice:Invoice
     {
@@ -8,6 +6,6 @@ namespace PointofSalesApi.Models
         public int SupplierId { get; set; }
         [ForeignKey("SupplierId")]
         public virtual Supplier Supplier { get; set; }
-        public ICollection<PurchaseInvoiceItem> purchaseInvoiceItems { get; set; }
+        public ICollection<PurchaseInvoiceItem> purchaseInvoiceItems { get; set; } = new List<PurchaseInvoiceItem>();
     }
 }

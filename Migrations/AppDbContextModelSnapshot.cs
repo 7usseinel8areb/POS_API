@@ -47,6 +47,22 @@ namespace PointofSalesApi.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "c4885cc6-feec-4ef6-8aca-9323b0dfb6b3",
+                            ConcurrencyStamp = "1",
+                            Name = "Admin",
+                            NormalizedName = "Admin"
+                        },
+                        new
+                        {
+                            Id = "54536ec8-014c-4f31-bd50-1357131db2aa",
+                            ConcurrencyStamp = "2",
+                            Name = "Cashier",
+                            NormalizedName = "Cashier"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -163,9 +179,15 @@ namespace PointofSalesApi.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<DateOnly>("BirthDate")
+                        .HasColumnType("date");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DepartmerntId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -174,11 +196,25 @@ namespace PointofSalesApi.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("HireDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -197,6 +233,9 @@ namespace PointofSalesApi.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -208,6 +247,8 @@ namespace PointofSalesApi.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DepartmerntId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -234,7 +275,7 @@ namespace PointofSalesApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("PointofSalesApi.Models.Customer", b =>
@@ -262,7 +303,7 @@ namespace PointofSalesApi.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("PointofSalesApi.Models.Employee", b =>
+            modelBuilder.Entity("PointofSalesApi.Models.Department", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -270,44 +311,13 @@ namespace PointofSalesApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateOnly>("BirthDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<DateTime>("HireDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Salary")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Employees");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("PointofSalesApi.Models.Product", b =>
@@ -360,8 +370,9 @@ namespace PointofSalesApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("InvoiceDate")
                         .HasColumnType("datetime2");
@@ -374,7 +385,7 @@ namespace PointofSalesApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("SupplierId");
 
@@ -418,10 +429,11 @@ namespace PointofSalesApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("InvoiceDate")
@@ -432,9 +444,9 @@ namespace PointofSalesApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("AppUserId");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("SalesInvoices");
                 });
@@ -544,15 +556,15 @@ namespace PointofSalesApi.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PointofSalesApi.Models.Employee", b =>
+            modelBuilder.Entity("PointofSalesApi.Models.AppUser", b =>
                 {
-                    b.HasOne("PointofSalesApi.Models.AppUser", "User")
-                        .WithOne("Employee")
-                        .HasForeignKey("PointofSalesApi.Models.Employee", "UserId")
+                    b.HasOne("PointofSalesApi.Models.Department", "Department")
+                        .WithMany("Users")
+                        .HasForeignKey("DepartmerntId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Department");
                 });
 
             modelBuilder.Entity("PointofSalesApi.Models.Product", b =>
@@ -576,9 +588,9 @@ namespace PointofSalesApi.Migrations
 
             modelBuilder.Entity("PointofSalesApi.Models.PurchaseInvoice", b =>
                 {
-                    b.HasOne("PointofSalesApi.Models.Employee", "Employee")
+                    b.HasOne("PointofSalesApi.Models.AppUser", "appUser")
                         .WithMany()
-                        .HasForeignKey("EmployeeId")
+                        .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -588,9 +600,9 @@ namespace PointofSalesApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Employee");
-
                     b.Navigation("Supplier");
+
+                    b.Navigation("appUser");
                 });
 
             modelBuilder.Entity("PointofSalesApi.Models.PurchaseInvoiceItem", b =>
@@ -614,21 +626,21 @@ namespace PointofSalesApi.Migrations
 
             modelBuilder.Entity("PointofSalesApi.Models.SalesInvoice", b =>
                 {
+                    b.HasOne("PointofSalesApi.Models.AppUser", "appUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PointofSalesApi.Models.Customer", "Customer")
                         .WithMany("SalesInvoices")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PointofSalesApi.Models.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Customer");
 
-                    b.Navigation("Employee");
+                    b.Navigation("appUser");
                 });
 
             modelBuilder.Entity("PointofSalesApi.Models.SalesInvoiceItem", b =>
@@ -650,12 +662,6 @@ namespace PointofSalesApi.Migrations
                     b.Navigation("SalesInvoice");
                 });
 
-            modelBuilder.Entity("PointofSalesApi.Models.AppUser", b =>
-                {
-                    b.Navigation("Employee")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("PointofSalesApi.Models.Category", b =>
                 {
                     b.Navigation("Products");
@@ -664,6 +670,11 @@ namespace PointofSalesApi.Migrations
             modelBuilder.Entity("PointofSalesApi.Models.Customer", b =>
                 {
                     b.Navigation("SalesInvoices");
+                });
+
+            modelBuilder.Entity("PointofSalesApi.Models.Department", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("PointofSalesApi.Models.PurchaseInvoice", b =>

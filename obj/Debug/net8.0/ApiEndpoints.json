@@ -1,7 +1,181 @@
 [
   {
+    "ContainingType": "PointofSalesApi.Controllers.ApplicationUserController",
+    "Method": "GetAppUsers",
+    "RelativePath": "api/ApplicationUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.ApplicationUserController",
+    "Method": "GetSingleAppUser",
+    "RelativePath": "api/ApplicationUser/{userName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.ApplicationUserController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/ApplicationUser/Delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.ApplicationUserController",
+    "Method": "Login",
+    "RelativePath": "api/ApplicationUser/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDTO",
+        "Type": "PointofSalesApi.DTO.AppUsersDTO.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.ApplicationUserController",
+    "Method": "AddAppUser",
+    "RelativePath": "api/ApplicationUser/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addAppUserDTO",
+        "Type": "PointofSalesApi.DTO.AppUsersDTO.AddAppUserDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.ApplicationUserController",
+    "Method": "AddRoleToUser",
+    "RelativePath": "api/ApplicationUser/User/{email}/RoleName",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "role",
+        "Type": "PointofSalesApi.DTO.AppUsersDTO.UserRolesDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.CategoryController",
+    "Method": "GetCategories",
+    "RelativePath": "api/Category",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.CategoryController",
+    "Method": "AddCategory",
+    "RelativePath": "api/Category",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "category",
+        "Type": "PointofSalesApi.DTO.CategoriesDTO.AddCategoryDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.CategoryController",
+    "Method": "GetCategory",
+    "RelativePath": "api/Category/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.CategoryController",
+    "Method": "EditCategory",
+    "RelativePath": "api/Category/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "category",
+        "Type": "PointofSalesApi.DTO.CategoriesDTO.AddCategoryDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.CategoryController",
+    "Method": "DeleteCategory",
+    "RelativePath": "api/Category/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "PointofSalesApi.Controllers.CustomerController",
-    "Method": "GetAllCustomers",
+    "Method": "GetCustomers",
     "RelativePath": "api/Customer",
     "HttpMethod": "GET",
     "IsController": true,
@@ -10,13 +184,214 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "PointofSalesApi.Controllers.EmployeeController",
-    "Method": "GetAllEmployees",
-    "RelativePath": "api/Employee",
+    "ContainingType": "PointofSalesApi.Controllers.CustomerController",
+    "Method": "AddCustomer",
+    "RelativePath": "api/Customer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customer",
+        "Type": "PointofSalesApi.DTO.CustomerDTO.CustomerDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.CustomerController",
+    "Method": "GetCustomerById",
+    "RelativePath": "api/Customer/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.CustomerController",
+    "Method": "EditCustomer",
+    "RelativePath": "api/Customer/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "customer",
+        "Type": "PointofSalesApi.DTO.CustomerDTO.CustomerDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.CustomerController",
+    "Method": "DeleteCustomer",
+    "RelativePath": "api/Customer/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.ProductController",
+    "Method": "GetProducts",
+    "RelativePath": "api/Product",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.ProductController",
+    "Method": "Add",
+    "RelativePath": "api/Product",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "product",
+        "Type": "PointofSalesApi.DTO.ProductsDTO.AddProductDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.ProductController",
+    "Method": "GetProduct",
+    "RelativePath": "api/Product/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.ProductController",
+    "Method": "EditProduct",
+    "RelativePath": "api/Product/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "product",
+        "Type": "PointofSalesApi.DTO.ProductsDTO.AddProductDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.ProductController",
+    "Method": "Delete",
+    "RelativePath": "api/Product/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.PurchaseInvoiceController",
+    "Method": "GetPurchases",
+    "RelativePath": "api/PurchaseInvoice",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.PurchaseInvoiceController",
+    "Method": "GetSinglePurchase",
+    "RelativePath": "api/PurchaseInvoice/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.PurchaseInvoiceController",
+    "Method": "AddPurchaseInvoice",
+    "RelativePath": "api/PurchaseInvoice/addPurchase",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addPurchase",
+        "Type": "PointofSalesApi.DTO.PurchaseInvoicesDTO.AddPurchaseInvoiceDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PointofSalesApi.Controllers.PurchaseInvoiceController",
+    "Method": "EditPurchase",
+    "RelativePath": "api/PurchaseInvoice/EditPurchase/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "addPurchaseInvoice",
+        "Type": "PointofSalesApi.DTO.PurchaseInvoicesDTO.AddPurchaseInvoiceDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -65,7 +440,7 @@
     "Parameters": [
       {
         "Name": "supplier",
-        "Type": "PointofSalesApi.DTO.SupplierDTO",
+        "Type": "PointofSalesApi.DTO.SuppliersDTO.SupplierDTO",
         "IsRequired": true
       }
     ],
@@ -89,7 +464,7 @@
   },
   {
     "ContainingType": "PointofSalesApi.Controllers.SupplierController",
-    "Method": "PutSupplier",
+    "Method": "EditSupplier",
     "RelativePath": "api/Supplier/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -102,7 +477,7 @@
       },
       {
         "Name": "supplier",
-        "Type": "PointofSalesApi.DTO.SupplierDTO",
+        "Type": "PointofSalesApi.DTO.SuppliersDTO.SupplierDTO",
         "IsRequired": true
       }
     ],

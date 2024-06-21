@@ -1,11 +1,13 @@
-﻿namespace PointofSalesApi.Controllers
+﻿using PointofSalesApi.DTO.SuppliersDTO;
+using PointofSalesApi.Services.SupplierService;
+
+namespace PointofSalesApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class SupplierController : ControllerBase
     {
-
-        public ISupplierService SupplierService { get; }
+        private readonly ISupplierService SupplierService;
 
         public SupplierController(ISupplierService supplierService)
         {
@@ -30,7 +32,6 @@
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> PostSupplier(SupplierDTO supplier)
         {
             if (ModelState.IsValid)
@@ -42,8 +43,7 @@
         }
 
         [HttpPut("{id:int}")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> PutSupplier(int id,SupplierDTO supplier)
+        public async Task<IActionResult> EditSupplier(int id,SupplierDTO supplier)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@
             {
                 return NoContent();
             }
-            return NotFound();
+            return BadRequest();
         }
     }
 }

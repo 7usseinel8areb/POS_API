@@ -1,9 +1,9 @@
 ﻿
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
-using PointofSalesApi.DTO;
+using PointofSalesApi.DTO.SuppliersDTO;
 
-namespace PointofSalesApi.Services.ModelsServices
+namespace PointofSalesApi.Services.SupplierService
 {
     public class SupplierService : ISupplierService
     {
@@ -34,7 +34,7 @@ namespace PointofSalesApi.Services.ModelsServices
         }
         public async Task Add(SupplierDTO supplier)
         {
-            if(supplier == null)
+            if (supplier == null)
             {
                 throw new ArgumentNullException(nameof(supplier));
             }
@@ -51,7 +51,7 @@ namespace PointofSalesApi.Services.ModelsServices
 
         public SupplierWithProductsAndPurchaseInvoiceDTO? GetSupplier(int id)
         {
-            
+
             Supplier supplier = appDbContext.Suppliers
                 .Include(s => s.Products)
                 .FirstOrDefault(s => s.Id == id);
@@ -69,7 +69,7 @@ namespace PointofSalesApi.Services.ModelsServices
                     .Select(s => s.Name)
                     .ToList()
             };
-            return (supplierDTO);
+            return supplierDTO;
         }
 
         public List<SupplierWithProductsAndPurchaseInvoiceDTO> GetSuppliers()
@@ -118,7 +118,7 @@ namespace PointofSalesApi.Services.ModelsServices
             {
                 return false;
             }
-            oldSupplier.PhoneNumber =supplier.SupplierPhone;
+            oldSupplier.PhoneNumber = supplier.SupplierPhone;
             oldSupplier.Email = supplier.SupplierEmail;
             oldSupplier.Name = supplier.SupplierName;
             var affectedRows = appDbContext.SaveChanges();

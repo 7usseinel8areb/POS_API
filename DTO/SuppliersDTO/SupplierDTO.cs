@@ -1,4 +1,4 @@
-﻿namespace PointofSalesApi.DTO
+﻿namespace PointofSalesApi.DTO.SuppliersDTO
 {
     public class SupplierDTO
     {

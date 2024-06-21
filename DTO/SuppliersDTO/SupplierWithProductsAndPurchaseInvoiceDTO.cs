@@ -1,6 +1,6 @@
-﻿namespace PointofSalesApi.DTO
+﻿namespace PointofSalesApi.DTO.SuppliersDTO
 {
-    public class SupplierWithProductsAndPurchaseInvoiceDTO:SupplierDTO
+    public class SupplierWithProductsAndPurchaseInvoiceDTO : SupplierDTO
     {
         public List<string> ProductsName { get; set; } = new List<string>();
         /*public ICollection<Product> Products { get; set; } = new List<Product>();
